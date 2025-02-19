@@ -2,7 +2,6 @@ export class Panic {
   public readonly message: string;
   public readonly stack: string;
   
-
   constructor(message: string) {
     this.message = message;
     this.stack = new Error().stack || "";

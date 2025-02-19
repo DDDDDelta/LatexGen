@@ -1,7 +1,7 @@
 import Disposable from "src/Support/Dispose";
-import panic from "src/Support/Panic"
+import panic from "src/Support/Panic";
 
-import * as fs from "fs"
+import * as fs from "fs";
 
 export interface LOStream {
   Insert(S: string): LOStream;

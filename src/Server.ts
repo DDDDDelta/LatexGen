@@ -1,5 +1,5 @@
 import { ApolloServer } from '@apollo/server';
-import Database from './Database';
+import DBConnSingle from './Database';
 
 export default class APIServer {
     
@@ -12,12 +12,11 @@ export default class APIServer {
 
         APIServer.instance = new ApolloServer({ typeDefs, resolvers });
 
-        await Database.connect();
         await APIServer.instance.start();
     }
 
     static storeInfo = async (owner: string, text: string) => {
-        const db =  Database.getDatabase();
+        const db =  DBConnSingle.getDatabase();
         if (db) {
             const result = await db.collection("info").insertOne({
                 owner: owner,

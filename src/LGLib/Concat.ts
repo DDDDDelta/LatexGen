@@ -1,5 +1,5 @@
-import { PrologProvider, BodyProvider, EpiLogProvider } from "src/LGLib/Provider"
-import { LOStream } from "src/LGLib/Output"
+import { PrologProvider, BodyProvider, EpiLogProvider } from "src/LGLib/Provider";
+import { LOStream } from "src/LGLib/Output";
 
 function Concat(
   S: LOStream, PP: PrologProvider, 
