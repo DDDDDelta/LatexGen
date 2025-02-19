@@ -21,5 +21,12 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "deasync": "^0.1.30",
+    "dotenv": "^16.4.7",
+    "graphql": "^16.10.0",
+    "mongodb": "^6.13.0"
   }
 }
