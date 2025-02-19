@@ -1,10 +1,11 @@
 import Concat from "src/LGLib/Concat";
-import { LOFStream } from "./LGLib/Output";
+import { LOFStream } from "src/LGLib/Output";
+import { RunMain } from "src/Support/Process"
 
-function main(...args: string[]): number {
-  console.log("LatexGen");  
+function main(argv: string[]): number {
+  console.log(argv); 
 
   return 0;
 }
 
-console.log(`LatexGen exited with code ${main(...process.argv)}`);
+RunMain(main);

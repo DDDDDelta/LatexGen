@@ -1,5 +1,5 @@
-import Disposable from "../Support/Dispose";
-import panic from "../Support/Panic"
+import Disposable from "src/Support/Dispose";
+import panic from "src/Support/Panic"
 
 import * as fs from "fs"
 
