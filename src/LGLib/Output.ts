@@ -9,9 +9,13 @@ export interface LOStream {
   Error(): string;
 };
 
-export class LTOFStream implements LOStream, Disposable {
+export class LOFStream implements LOStream, Disposable {
   private FD: number;
   private ErrM: string;
+
+  get File() {
+    return this.FD;
+  }
 
   constructor(path: string) {
     try {
@@ -46,7 +50,7 @@ export class LTOFStream implements LOStream, Disposable {
 
   public Dispose(): void {
     this.Flush();
-    
+
     if (this.FD >= 0) {
       try {
         fs.closeSync(this.FD);

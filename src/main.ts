@@ -1,4 +1,5 @@
-import Concator from "./LGLib/Concat";
+import Concat from "src/LGLib/Concat";
+import { LOFStream } from "./LGLib/Output";
 
 function main(...args: string[]): number {
   console.log("LatexGen");  
