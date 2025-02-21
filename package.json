@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && tsc-alias",
-    "start": "node dist/main.js "
+    "start": "node dist/main.js ",
+    "start-server": "node dist/WebServer/Server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "deasync": "^0.1.30",
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
+    "graphql-tag": "^2.12.6",
     "mongodb": "^6.13.0"
   }
 }
