@@ -1,3 +1,5 @@
+import { ReadFile } from "./Input";
+
 export interface PrologProvider {
   getProlog(): string;
 };
@@ -45,3 +47,39 @@ export class TrivialEpilogProvider implements EpiLogProvider {
     return this.P;
   }
 }
+
+export class FilePrologProvider implements PrologProvider {
+  private P: string;
+
+  constructor(path: string) {
+    this.P = ReadFile(path) ?? "";
+  }
+
+  public getProlog(): string {
+    return this.P;
+  }
+};
+
+export class FileBodyProvider implements BodyProvider {
+  private P: string;
+
+  constructor(path: string) {
+    this.P = ReadFile(path) ?? "";
+  }
+
+  public getBody(): string {
+    return this.P;
+  }
+};
+
+export class FileEpilogProvider implements EpiLogProvider {
+  private P: string;
+
+  constructor(path: string) {
+    this.P = ReadFile(path) ?? "";
+  }
+
+  public getEpilog(): string {
+    return this.P;
+  }
+};

@@ -58,10 +58,11 @@ export class LOFStream implements LOStream, Disposable {
       catch(e: any) {
         panic(e.message);
       }
+      this.FD = -1;
     }
   }
 
   public valueOf(): boolean {
-    return !this.ErrM;
+    return !this.ErrM || this.FD <= 0;
   }
 };
