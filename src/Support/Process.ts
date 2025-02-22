@@ -1,7 +1,11 @@
-import panic from "./Panic";
+import panic, { GetPanicError } from "./Panic";
 
 function OnExit(): void {
   process.on("exit", (code) => {
+    let p = GetPanicError();
+    if (p) {
+      console.log(p);
+    }
     console.log(`Exiting with code: ${code}`);
   });
 }
@@ -12,7 +16,7 @@ export function getProcEnvNoFail(name: string): string {
     return res;
   }
   else {
-    panic();
+    panic(new Error(`Environment variable ${name} not set`));
   }
 }
 

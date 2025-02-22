@@ -22,7 +22,7 @@ export default class DBConnSingle {
         SyncAwaitVoid(DBConnSingle.connect());
       }
       catch(e: any) {
-        panic(e.message);
+        panic(e);
       }
 
       return DBConnSingle.instance!;

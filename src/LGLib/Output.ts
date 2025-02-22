@@ -56,7 +56,7 @@ export class LOFStream implements LOStream, Disposable {
         fs.closeSync(this.FD);
       }
       catch(e: any) {
-        panic(e.message);
+        panic(e);
       }
       this.FD = -1;
     }
