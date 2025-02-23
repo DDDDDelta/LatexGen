@@ -13,10 +13,10 @@ async function startServer() {
     port = 4000;
   }
 
-    let server = new ApolloServer({ typeDefs, resolvers });
-    const { url } = await startStandaloneServer( server, { listen: { port: port } } );
-    console.log("server started at port " + port);
-    
+  let server = new ApolloServer({ typeDefs, resolvers });
+  const { url } = await startStandaloneServer( server, { listen: { port: port } } );
+  console.log("server started at port " + port);
+  
 }
 
 startServer();
