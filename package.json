@@ -17,6 +17,7 @@
   "author": "DDDelta",
   "license": "MIT",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/deasync": "^0.1.5",
     "@types/node": "^22.13.4",
     "tsc-alias": "^1.8.10",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.11.3",
+    "cors": "^2.8.5",
     "deasync": "^0.1.30",
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",

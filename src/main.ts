@@ -2,8 +2,11 @@ import Concat from "src/LGLib/Concat";
 import { LOFStream } from "src/LGLib/Output";
 import { InvokeMain } from "src/Support/Process";
 import { TrivialBodyProvider, TrivialEpilogProvider, TrivialPrologProvider } from "src/LGLib/Provider";
+// import { getLGMode } from "src/Common/Options";
 
 function main(argv: string[]): number {
+  // getLGMode();
+
   let out = new LOFStream("114514.tex");
 
   let pro = new TrivialPrologProvider("114514");
