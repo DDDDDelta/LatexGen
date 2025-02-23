@@ -19,7 +19,7 @@ export default class DBConnSingle {
   public static getDatabase(): Db {
     if (!DBConnSingle.instance) {
       try {
-        SyncAwaitVoid(DBConnSingle.connect());
+        DBConnSingle.connect();
       }
       catch(e: any) {
         panic(e.message);
