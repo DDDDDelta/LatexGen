@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const typeDefs = gql`
   type Query { 
-    hello: String 
+    viewInfo(owner: String!): String
   } 
   type Mutation { 
     storeInfo(owner: String!, text: String!): Boolean! 

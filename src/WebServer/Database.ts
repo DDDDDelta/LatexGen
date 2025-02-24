@@ -16,10 +16,10 @@ export default class DBConnSingle {
     DBConnSingle.instance = client.db(dbName);
   }
 
-  public static getDatabase(): Db {
+  public static async getDatabase(): Promise<Db> {
     if (!DBConnSingle.instance) {
       try {
-        DBConnSingle.connect();
+        await DBConnSingle.connect();
       }
       catch(e: any) {
         panic(e);

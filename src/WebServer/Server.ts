@@ -25,11 +25,15 @@ async function startServer() {
   await server.start();
 
   app.use(
-    '/',
-    cors<cors.CorsRequest>(),
+    '/gql',
     express.json(),
+    cors(),
     expressMiddleware(server),
   );
+
+  app.get('/upload', (req, res) => {
+    res.send('Hello, Express.js!');
+});
 
   httpServer.listen(port, () => {
     console.log("Server is running on port " + port);

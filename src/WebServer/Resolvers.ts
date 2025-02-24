@@ -1,13 +1,13 @@
 import DBConnSingle from './Database';
 
 const storeInfo = async (_: any, query: any) => {
-    const db =  DBConnSingle.getDatabase();
+    const db =  await DBConnSingle.getDatabase();
     if (db) {
         let owner = query.owner;
         let text = query.text;
         const filter = { owner: owner };
         const update = { 
-            $set: { text: text } 
+            $push: { text: text }
         };
         const options = { upsert: true };
         const result = await db.collection('info').updateOne(filter, update, options);
@@ -16,9 +16,25 @@ const storeInfo = async (_: any, query: any) => {
     return false;
 };
 
+const viewInfo = async (_: any, query: any) => {
+    const db = await DBConnSingle.getDatabase();
+    if (db) {
+        let owner = query.owner;
+        const result = await db.collection('info').findOne({
+            owner: owner
+        });
+        if (result) {
+            return JSON.stringify(result);
+        } else {
+            return 'Not Found';
+        }
+    }
+    return 'Error';
+}
+
 const resolvers = { 
     Query: { 
-        hello: () => "hi" 
+        viewInfo: viewInfo
     }, 
     Mutation: { 
         storeInfo: storeInfo 
