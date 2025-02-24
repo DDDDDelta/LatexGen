@@ -18,7 +18,7 @@ async function startServer() {
     port = 4000;
   }
 
-  const app = express();
+  const app = express();    
   const httpServer = http.createServer(app);
 
   let server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginDrainHttpServer({ httpServer })] });
