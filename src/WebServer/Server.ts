@@ -7,8 +7,12 @@ import express from 'express';
 import { typeDefs } from 'src/WebServer/TypeDefs';
 import resolvers from 'src/WebServer/Resolvers';
 import { getProcEnvNoFail } from 'src/Support/Process';
+import storage, { uploadFolder } from './Upload'
+import file2Text from 'src/LGLib/TextConvert';
+
 
 async function startServer() {
+
   let port: number;
   try {
     port = parseInt(getProcEnvNoFail("PORT"));
@@ -31,9 +35,24 @@ async function startServer() {
     expressMiddleware(server),
   );
 
-  app.get('/upload', (req, res) => {
-    res.send('Hello, Express.js!');
-});
+  app.post('/upload', storage.single("file"), async (req, res) => {
+		if (!req.file) {
+			return res.status(400).json({ error: "No file uploaded" });
+		}
+
+		const text = await file2Text(req.file);
+	
+		res.status(200).json({ 
+			url: `http://localhost:4000/${uploadFolder()}/${req.file.filename}`,
+			text: text
+		});
+	});
+
+	app.use(`/${uploadFolder()}`, express.static(uploadFolder(), {
+		setHeaders: (res, _) => {
+			res.setHeader("Content-Disposition", "attachment");
+		}
+	}));
 
   httpServer.listen(port, () => {
     console.log("Server is running on port " + port);
