@@ -21,11 +21,12 @@ const storage = multer.diskStorage({
 			if (fs.existsSync(path)) {
 				let nameSplit = name.split('.');
 				let pathSplit = path.split('.');
+				let rand = Math.floor(Math.random() * 100000).toString();
 				if (nameSplit.length >= 2) {
-					nameSplit[nameSplit.length - 2] += '+';
+					nameSplit[nameSplit.length - 2] += rand;
 				}
 				if (pathSplit.length >= 2) {
-					pathSplit[pathSplit.length - 2] += '+';
+					pathSplit[pathSplit.length - 2] += rand;
 				}
 				const nameFinal = nameSplit.join('.');
 				const pathFinal = pathSplit.join('.');
